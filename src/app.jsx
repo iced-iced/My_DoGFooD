@@ -1,26 +1,31 @@
 import React, {useState} from "react";
-import Card from "./components/Card";
-import data from "./assets/data.json";
-import Header from "./components/Header";
-import Footer from "./components/Footer"
+// import Catalogue from "./pages/Catalogue";
+// import Container from "react-bootstrap/Container";
+// import Row from "react-bootstrap/Row";
+// import Col from "react-bootstrap/Col";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Product from "./pages/product"
 
 const App =() => {
-    const [goods, setGoods] = useState(data);
-
-        return (
-            <div className="wrapper">
-                <Header products={data} update={setGoods}/>
-                <div className="cards-container">
-                    {goods.map((d, i) => <Card
-                        key={i}
-                        img={d.picture}
-                        text={d.name}
-                        price={d.price}
-                        />)}
-                </div>
-                <Footer/>
-            </div>
-        )
-    }
+    // const st = {
+    //     height: "50px",
+    //     backgroundColor: "silver",
+    //     border: "1px solid darkorchid"
+    // }
+        // return <Container style={{height: "600px", backgroundColor: "darkorchid"}}>
+        //     <Row>
+        //         <Col md={12} style={st}/>
+        //         <Col md={3} xs={6} style={st}/>
+        //         <Col md={3} xs={6} style={st}/>
+        //         <Col md={3} xs={6} style={st}/>
+        //         <Col md={3} xs={6} style={st}/>
+        //         <Col md={12} style={st}/>
+        //         <Col md={6} style={st}/>
+        //         <Col md={6} style={st}/>
+        //         <Col md={12} style={st}/>
+        //     </Row>
+        //     </Container>
+        return <Product/>
+}
 
 export default App;
