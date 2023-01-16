@@ -18,9 +18,9 @@ export default () => {
             <p>Мы на связи</p>
             <a href="tel:+79995946556">+7(999)594-65-65</a>
             <nav>
-                <a href=""><i class="fa-brands fa-vk"></i></a>
-                <a href=""><i class="fa-brands fa-odnoklassniki"></i></a>
-                <a href=""><i class="fa-brands fa-telegram"></i></a>
+                <a href=""><i className="fa-brands fa-vk"></i></a>
+                <a href=""><i className="fa-brands fa-odnoklassniki"></i></a>
+                <a href=""><i className="fa-brands fa-telegram"></i></a>
             </nav>
         </div>
     </footer>
