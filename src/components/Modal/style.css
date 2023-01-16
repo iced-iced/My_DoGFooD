@@ -1,0 +1,35 @@
+.popup {
+    width: 300px;
+    background-color: #fff;
+    border-radius: 15px;
+    position: relative;
+    padding: 20px;
+}
+
+.popup-box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #0006;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.popup-box.Active {
+    display: flex;
+}
+
+.popup-close {
+    position: absolute;
+    right: 20px;
+    cursor: pointer;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}

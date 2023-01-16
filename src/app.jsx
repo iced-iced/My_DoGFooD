@@ -7,11 +7,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Catalogue from "./pages/Catalogue";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Modal from "./components/Modal";
 // import Main from "./components/Main";
 
 const App =() => {
         const [goods, setGoods] = useState([]);
+        const [data, setData] = useState([]);
         const [token, setToken] = useState(localStorage.getItem("shopUser"));
+        const [popupActive, changePopupActive] = useState(true);
 
         useEffect(() => {
                 fetch("https://api.react-learning.ru/products", {
@@ -19,14 +22,21 @@ const App =() => {
                                 "Authorization": `Bearer ${token}`
                         }
                 })
+                .then(res => res.json())
+                .then(data => {
+                        setGoods(data.products)
+                        setData(data.products)       
+                });
         }, []);
 
-        console.log(token)
-        return  <div className="wrapper">
-                <Header products={goods} update={setGoods}/>
+        return  <>
+        <div className="wrapper">
+                <Header products={data} update={setGoods} openPopup={changePopupActive}/>
                 <Catalogue goods={goods}/>
                 <Footer/>    
         </div> 
+        <Modal isActive={popupActive} changeActive={changePopupActive}/>      
+        </>  
 }
 
 export default App;
