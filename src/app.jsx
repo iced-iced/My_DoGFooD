@@ -1,33 +1,47 @@
 import React, {useState, useEffect} from "react";
-// import Container from "react-bootstrap/Container";
-// import Row from "react-bootstrap/Row";
-// import Col from "react-bootstrap/Col";
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import Product from "./pages/product"
 import Catalogue from "./pages/Catalogue";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Modal from "./components/Modal";
-// import Main from "./components/Main";
+import Api from "./Api.js";
+
 
 const App =() => {
         const [goods, setGoods] = useState([]);
         const [data, setData] = useState([]);
         const [token, setToken] = useState(localStorage.getItem("shopUser"));
-        const [popupActive, changePopupActive] = useState(true);
+        const [popupActive, changePopupActive] = useState(false);
+        const [api, setApi] = useState(new Api(token));
+       
+        useEffect(() => {
+                console.log("user is changed");
+                setApi(new Api(token));
+        },[token])
+
+        // useEffect(() => {
+        //         fetch("https://api.react-learning.ru/products", {
+        //                 headers: {
+        //                         "Authorization": `Bearer ${token}`
+        //                 }
+        //         })
+        //         .then(res => res.json())
+        //         .then(data => {
+        //                 setGoods(data.products)
+        //                 setData(data.products)       
+        //         });
+        // }, []);
 
         useEffect(() => {
-                fetch("https://api.react-learning.ru/products", {
-                        headers: {
-                                "Authorization": `Bearer ${token}`
-                        }
+                api.getProducts()
+                        .then(res => res.json())
+                        .then(data => {
+                                console.log(data);
+                                setGoods(data.products);
+                                setData(data.products);        
                 })
-                .then(res => res.json())
-                .then(data => {
-                        setGoods(data.products)
-                        setData(data.products)       
-                });
         }, []);
+
 
         return  <>
         <div className="wrapper">
